@@ -1,8 +1,9 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const app = express();
 const Usuario = require('../models/usuario.model');
 
-// Create and Save a new Customer
+// Crea y  Graba un nuevo usuario
 exports.create = (req, res) => {
     let body = req.body;
 
@@ -16,7 +17,7 @@ exports.create = (req, res) => {
     // Crear un usuario
     const usuario = new Usuario({
         usuario: body.usuario,
-        password: body.password,
+        password: bcrypt.hashSync(body.password, 10),
         email: body.email,
         role: body.role,
         estado: body.estado

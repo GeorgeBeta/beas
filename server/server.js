@@ -7,7 +7,7 @@ const app = express();
 
 app.use(bodyPaser.urlencoded({ extended: false }));
 
-app.use(require('./routes/usuario.route'));
+app.use(require('./routes/index'));
 
 app.get('/', function(req, res) {
     res.json('Hola la Aplicación ha arrancado');

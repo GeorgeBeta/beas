@@ -55,6 +55,25 @@ Usuario.findById = (usuarioId, result) => {
     });
 };
 
+Usuario.findByEmail = (usuarioEmail, result) => {
+    sql.query(`SELECT * FROM usuario WHERE email = '${usuarioEmail}'`, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+            return;
+        }
+
+        if (res.length) {
+            console.log("Usuario encontrado: ", res[0]);
+            result(null, res[0]);
+            return;
+        }
+
+        // No encontrado el usuario con el email señalado
+        result({ kind: "No encontrado" }, null);
+    });
+};
+
 Usuario.getAll = result => {
     sql.query("SELECT * FROM usuario", (err, res) => {
         if (err) {
