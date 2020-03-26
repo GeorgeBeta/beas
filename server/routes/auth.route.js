@@ -7,6 +7,9 @@ const auth = require('../controllers/auth.controller');
 const app = express();
 
 // Logea un usuario existente
-app.post("/login", auth.signin);
+app.post("/login", auth.signinEmailOrUsuario);
+
+// Registra un usuario nuevo
+app.post("/register", auth.signup);
 
 module.exports = app;

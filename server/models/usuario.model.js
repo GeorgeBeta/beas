@@ -2,7 +2,7 @@
     USE egoHouse;
     CREATE TABLE IF NOT EXISTS usuario(
         id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
-        usuario VARCHAR(30), 
+        usuario VARCHAR(30) NOT NULL UNIQUE, 
         password VARCHAR(255), 
         email VARCHAR(255), 
         role VARCHAR(10), 
@@ -20,7 +20,7 @@ const Usuario = function(usuario) {
     this.email = usuario.email;
     this.role = usuario.role;
     this.estado = true;
-    //this.fechaAlta = usuario.fechaAlta;
+    this.fechaAlta = usuario.fechaAlta;
 };
 
 Usuario.create = (newUsuario, result) => {
@@ -31,8 +31,11 @@ Usuario.create = (newUsuario, result) => {
             return;
         }
 
-        console.log("Usuario creado: ", { id: res.insertId });
-        result(null, { id: res.insertId });
+        //console.log("Usuario creado: ", { id: res.insertId });
+        newUsuario.id = res.insertId;
+        console.log("Usuario creado: ", newUsuario);
+        //result(null, { id: res.insertId });
+        result(null, newUsuario);
     });
 };
 
@@ -55,21 +58,23 @@ Usuario.findById = (usuarioId, result) => {
     });
 };
 
-Usuario.findByEmail = (usuarioEmail, result) => {
-    sql.query(`SELECT * FROM usuario WHERE email = '${usuarioEmail}'`, (err, res) => {
+Usuario.findOne = (dato, result) => {
+    let campo = Object.keys(dato)[0]; // campo: usuario o email
+    let valor = Object.values(dato)[0]; // valor: el valor de 'usario' o del 'email'
+
+    sql.query(`SELECT * FROM usuario WHERE ${campo} = '${valor}'`, (err, res) => {
         if (err) {
             console.log("error: ", err);
             result(err, null);
+            //result({ kind: "error" }, null);
             return;
         }
-
         if (res.length) {
-            console.log("Usuario encontrado: ", res[0]);
+            //console.log("Usuario encontrado: ", res[0]);
             result(null, res[0]);
             return;
         }
-
-        // No encontrado el usuario con el email señalado
+        // No encontrado el usuario con el id
         result({ kind: "No encontrado" }, null);
     });
 };
@@ -81,7 +86,6 @@ Usuario.getAll = result => {
             result(null, err);
             return;
         }
-
         console.log("Usuarios: ", res);
         result(null, res);
     });
