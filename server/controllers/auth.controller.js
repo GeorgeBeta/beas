@@ -2,11 +2,13 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const app = express();
 const Usuario = require('../models/usuario.model');
+const jwt = require('jsonwebtoken');
 //const Rol = require('../models/role.model')
 
 // Logea un usuario existente
 exports.signinEmailOrUsuario = (req, res) => {
     let body = req.body;
+    // let token;
     if (body.email) {
         Usuario.findOne({ email: body.email }, (err, usuarioDB) => {
             if (err) {
@@ -29,11 +31,10 @@ exports.signinEmailOrUsuario = (req, res) => {
                         message: 'Contraseña incorrecta'
                     })
                 }
-                console.log('TODO BENE');
-                let token = '... y a dicho el alcalde que no salga nadie que no anden con bromas que es muy mal ganao';
-                // let token = jwt.sign({
-                //     usuario: usuarioDB
-                // }, process.env.SEED, { expiresIn: Number(process.env.CADUCIDAD_TOKEN) });
+                // Generación del Token
+                let token = jwt.sign({
+                    usuario: usuarioDB
+                }, process.env.SEED, { expiresIn: Number(process.env.EXPIRATION_TOKEN) });
                 return res.json({
                     ok: true,
                     usuario: usuarioDB,
@@ -63,11 +64,10 @@ exports.signinEmailOrUsuario = (req, res) => {
                         message: 'Contraseña incorrecta'
                     })
                 }
-                console.log('TODO OK');
-                let token = 'las vacas del pueblo ya se han escapao ...';
-                // let token = jwt.sign({
-                //     usuario: usuarioDB
-                // }, process.env.SEED, { expiresIn: Number(process.env.CADUCIDAD_TOKEN) });
+                // Generación del Token
+                let token = jwt.sign({
+                    usuario: usuarioDB
+                }, process.env.SEED, { expiresIn: Number(process.env.EXPIRATION_TOKEN) });
                 return res.json({
                     ok: true,
                     usuario: usuarioDB,
