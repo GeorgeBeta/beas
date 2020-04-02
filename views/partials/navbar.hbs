@@ -1,0 +1,252 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">GeorgeBeta Ltd</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">Acerca de</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Usuarios
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Ver usuarios</a>
+                    <a class="dropdown-item" href="#">Añadir un usuario</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Modificar usuario</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+        <button type="button" class="btn btn-info justify-content-end" data-toggle="modal" data-target="#LoginModal">
+            <i class="material-icons pr-1">account_circle</i>Únete
+        </button>
+        {{!-- <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link p-2 text-light" href="#"><i
+                        class="material-icons md-14 pr-2">how_to_reg</i>Registro</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link p-2 text-light" href="/signin"><i
+                        class="material-icons md-14 pr-2">open_in_browser</i>Iniciar</a>
+            </li>
+        </ul> --}}
+        {{!-- <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form> --}}
+    </div>
+</nav>
+<!-- Modal LOGIN MODAL-->
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content ">
+            {{!-- <div class="modal-header">
+            </div> --}}
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="text-center mb-4">
+                    <img class="mb-4" src="../assets/img/zaporta.svg" alt="" width="72" height="72">
+                    <h1 class="h3 mb-3 font-weight-normal">INICIO DE SESIÓN</h1>
+                </div>
+                <form class="form-signin needs-validation" novalidate>
+                    <div class="form-label-group mb-3">
+                        <input type="text" id="inputUsuario" class="form-control" placeholder="Usuario" required
+                            autofocus>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Se debe introducir el nombre del usuario
+                        </div>
+                        {{!-- <label for="inputUsuario">Usuario</label> --}}
+                    </div>
+                    <div class="form-label-group mb-3">
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required
+                            autofocus>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Por favor introduzca un mail correcto.
+                        </div>
+                        {{!-- <label for="inputEmail">Email address</label> --}}
+                    </div>
+                    <div class="form-label-group mb-5">
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required
+                            autofocus>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Se debe introducir el password del usuario
+                        </div>
+                        {{!-- <label for="inputPassword">Password</label> --}}
+                    </div>
+                    <div class="mb-1">
+                        <a href="#" data-toggle="modal" data-target="#ForgetPasswordModal" data-dismiss="modal">¿Olvidaste tu contraseña?</a>
+                        <button class="btn btn-lg btn-primary btn-block mt-1" type="submit">ENTRAR</button>
+                    </div>
+                </form>
+                <hr/>
+                <div class="text-center mb-4">
+                    <span>Si no tienes cuenta, <a href="#" data-toggle="modal" data-target="#RegisterModal" data-dismiss="modal">registrate</a></span>
+                </div>
+            </div>
+            {{!-- <div class="modal-footer">
+            </div> --}}
+        </div>
+    </div>
+</div>
+<!-- Modal REGISTER MODAL-->
+<div class="modal fade" id="RegisterModal" tabindex="-1" role="dialog" aria-labelledby="RegisterModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content ">
+            {{!-- <div class="modal-header">
+            </div> --}}
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="text-center mb-4">
+                    <img class="mb-4" src="../assets/img/zaporta.svg" alt="" width="72" height="72">
+                    <h1 class="h3 mb-3 font-weight-normal">REGISTRO</h1>
+                </div>
+                <form class="form-signin needs-validation" novalidate>
+                    <div class="form-label-group mb-3">
+                        <input type="text" id="inputUsuario" class="form-control" placeholder="Usuario" required
+                            autofocus>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Se debe introducir el nombre del usuario
+                        </div>
+                        {{!-- <label for="inputUsuario">Usuario</label> --}}
+                    </div>
+                    <div class="form-label-group mb-3">
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required
+                            autofocus>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Por favor introduzca un mail correcto.
+                        </div>
+                        {{!-- <label for="inputEmail">Email address</label> --}}
+                    </div>
+                    <div class="form-label-group mb-5">
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required
+                            autofocus>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Se debe introducir el password del usuario
+                        </div>
+                        {{!-- <label for="inputPassword">Password</label> --}}
+                    </div>
+                    <div class="form-check mb-5">
+                        <input type="checkbox" id="inputcheck" class="form-check-input" required
+                            autofocus>
+                        <label class="form-check-label" for="inputcheck">Acepto las condiciones de uso de la política de privacidad</label>
+                        <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Se debe introducir el password del usuario
+                        </div>
+                        {{!-- <label for="inputPassword">Password</label> --}}
+                    </div>
+                    <div class="mb-1">
+                        <button class="btn btn-lg btn-primary btn-block mt-1" type="submit">CONTINUAR</button>
+                    </div>
+                </form>
+                <hr/>
+                <div class="text-center mb-4">
+                    <span>Si ya tienes cuenta, <a href="#" data-toggle="modal" data-target="#LoginModal" data-dismiss="modal">inicia sesión</a></span>
+                </div>
+            </div>
+            {{!-- <div class="modal-footer">
+            </div> --}}
+        </div>
+    </div>
+</div>
+<!-- Modal FORGET PASSWORD MODAL-->
+<div class="modal fade" id="ForgetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="ForgetPasswordModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content ">
+            {{!-- <div class="modal-header">
+            </div> --}}
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="text-center mb-4">
+                    <img class="mb-4" src="../assets/img/zaporta.svg" alt="" width="72" height="72">
+                    <h1 class="h3 mb-3 font-weight-normal">¿HAS OLVIDADO TU CONTRASEÑA?</h1>
+                    <div class="text-center mt-4">
+                        Introduce tu correo electrónico y te mandaremos los pasos para recuperar tu contraseña
+                    </div>
+                </div>
+                <form class="form-signin needs-validation" novalidate>
+                    <div class="form-label-group mb-5">
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Correo electrónico" required
+                            autofocus>
+                        {{!-- <label for="inputEmail">Email address</label> --}}
+                         <div class="valid-feedback">
+                            Correcto!
+                        </div>
+                        <div class="invalid-feedback">
+                            Por favor introduzca un mail correcto.
+                        </div>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">ENVIAR</button>
+                </form>
+                <hr/>
+                <div class="text-center mb-4">
+                    <span>¡Ya me acuerdo de la contraseña! <a href="#" data-toggle="modal" data-target="#LoginModal" data-dismiss="modal">Volver</a></span>
+                </div>
+            </div>
+            {{!-- <div class="modal-footer">
+            </div> --}}
+        </div>
+    </div>
+</div>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
